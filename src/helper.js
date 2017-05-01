@@ -2,17 +2,17 @@ export default class DistrictRepository {
   constructor(data) {
     this.data = data
   }
+
   cleanData() {
     let nonDuplicatedData = this.data.reduce((acc, dataPoint) => {
-      dataPoint.forEach( => {
-        if acc {
-          console.log('duplicate!')
-        } else {
-          acc.push(key)
-        }
-      })
+      let timeFrame = dataPoint.TimeFrame
+      let data = dataPoint.Data
+      if (dataPoint['Location'] === 'Colorado') {
+        acc.years.push({[timeFrame]: data})
+      }
       return acc
-    }, [] )
+    }, {Location: 'Colorado', years: []} )
+    console.log(nonDuplicatedData)
   }
 
   // test() {
