@@ -4,16 +4,16 @@ export default class DistrictRepository {
   }
 
   cleanData(rawData) {
-    return rawData.reduce((acc, dataPoint) => {
+     return rawData.reduce((acc, dataPoint) => {
+       if (!acc[dataPoint.Location]) {
+         acc[dataPoint.Location] = []
+       }
+       acc[dataPoint.Location].push({[dataPoint.TimeFrame]: dataPoint.Data})
+       return acc
+     }, {})
+   }
 
-      if (!acc[dataPoint.Location]) {
-        acc[dataPoint.Location] = []
-      }
-
-      acc[dataPoint.Location].push({[dataPoint.TimeFrame]: dataPoint.Data})
-
-
-      return acc
-    }, {})
-  }
+   findByName(location) {
+     return undefined
+   }
 }
