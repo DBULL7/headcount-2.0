@@ -1,24 +1,19 @@
 export default class DistrictRepository {
   constructor(data) {
-    this.data = data
+    this.data = this.cleanData(data)
   }
 
-  cleanData() {
-    let nonDuplicatedData = this.data.reduce((acc, dataPoint) => {
-      let timeFrame = dataPoint.TimeFrame
-      let data = dataPoint.Data
-      if (dataPoint['Location'] === 'Colorado') {
-        acc.years.push({[timeFrame]: data})
+  cleanData(raw) {
+    return raw.reduce((acc, dataPoint) => {
+
+      if (!acc[dataPoint.Location]) {
+        acc[dataPoint.Location] = []
       }
+
+      acc[dataPoint.Location].push({[dataPoint.TimeFrame]: dataPoint.Data})
+
+
       return acc
-    }, {Location: 'Colorado', years: []} )
-    console.log(nonDuplicatedData)
+    }, {})
   }
-
-  // test() {
-  // let test = this.data.filter(dataPoint =>
-  //   !dataPoint['Data'])
-  // console.log(test)
-  // }
-
 }
