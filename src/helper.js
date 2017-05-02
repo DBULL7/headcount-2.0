@@ -1,10 +1,10 @@
 export default class DistrictRepository {
-  constructor(data) {
-    this.data = this.cleanData(data)
+  constructor(rawData) {
+    this.data = this.cleanData(rawData)
   }
 
-  cleanData(raw) {
-    return raw.reduce((acc, dataPoint) => {
+  cleanData(rawData) {
+    return rawData.reduce((acc, dataPoint) => {
 
       if (!acc[dataPoint.Location]) {
         acc[dataPoint.Location] = []
