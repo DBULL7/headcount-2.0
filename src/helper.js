@@ -3,17 +3,23 @@ export default class DistrictRepository {
     this.data = this.cleanData(rawData)
   }
 
-  cleanData(rawData) {
-     return rawData.reduce((acc, dataPoint) => {
-       if (!acc[dataPoint.Location]) {
-         acc[dataPoint.Location] = []
-       }
-       acc[dataPoint.Location].push({[dataPoint.TimeFrame]: dataPoint.Data})
-       return acc
-     }, {})
-   }
+  cleanData(data) {
+    return data.reduce((acc, dataPoint) => {
+        const district = dataPoint.Location.toUpperCase()
+        const timeFrame = dataPoint.TimeFrame
+        const data = Math.round(1000*dataPoint.Data)/1000 || 0
 
-   findByName(location) {
-     return undefined
+        if (!acc[district]) {
+          acc[district] = {'location': district, 'data': {}}
+        }
+        acc[district].data[timeFrame] = data;
+        return acc
+      }, {})
+  }
+
+   findByName(searchedDistrict='') {
+     const district = searchedDistrict.toUpperCase()
+     console.log(this.data[district])
+     return this.data[district]
    }
 }
