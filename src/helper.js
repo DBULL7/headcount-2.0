@@ -19,7 +19,13 @@ export default class DistrictRepository {
 
    findByName(searchedDistrict='') {
      const district = searchedDistrict.toUpperCase()
-     console.log(this.data[district])
      return this.data[district]
+   }
+
+   findAllMatches(searchInput) {
+     const locations = Object.keys(this.data)
+
+     return searchInput ? locations.filter(location => location.includes(searchInput.toUpperCase()))
+                        : locations.map(location => this.data[location]) 
    }
 }
