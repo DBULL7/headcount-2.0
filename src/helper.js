@@ -1,6 +1,7 @@
 export default class DistrictRepository {
   constructor(rawData) {
     this.data = this.cleanData(rawData)
+    // console.log(this.data)
   }
 
   cleanData(data) {
@@ -15,6 +16,7 @@ export default class DistrictRepository {
         acc[district].data[timeFrame] = data;
         return acc
       }, {})
+
   }
 
    findByName(searchedDistrict='') {
@@ -26,6 +28,6 @@ export default class DistrictRepository {
      const locations = Object.keys(this.data)
 
      return searchInput ? locations.filter(location => location.includes(searchInput.toUpperCase()))
-                        : locations.map(location => this.data[location]) 
+                        : locations.map(location => this.data[location])
    }
 }
