@@ -1,12 +1,7 @@
 import React from 'react'
 import Card from './Card'
 
-const CardGrid = ( { data } ) => {
-  console.log(data.data)
-  if (data.data) {
-    let keys = Object.keys(data.data)
-    console.log(keys);
-  }
+const CardGrid = ({data}) => {
   return (
     <div>
       {

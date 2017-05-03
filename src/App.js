@@ -18,10 +18,9 @@ class App extends Component {
 
   componentDidMount() {
     let data = new DistrictRepository(kinderData)
-    // console.log(data.data);
-    this.setState({ data })
+    // console.log(data.data)
+    this.setState({data: data.data})
   }
-
 
   retrieveInput(input) {
     this.setState({input})
