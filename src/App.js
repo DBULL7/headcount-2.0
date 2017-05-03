@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
-import Card from './Card.js'
+import CardGrid from './CardGrid.js'
 import Input from './Input.js'
+import DistrictRepository from './helper.js'
+import kinderData from '../data/kindergartners_in_full_day_program.js'
+
 
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      input: ''
+      input: '',
+      data: {}
     }
   }
 
+  componentDidMount() {
+    let data = new DistrictRepository(kinderData)
+    // console.log(data.data);
+    this.setState({ data })
+  }
+
+
   retrieveInput(input) {
-    this.setState({input: input})
+    this.setState({input})
   }
 
   render() {
@@ -21,7 +32,7 @@ class App extends Component {
       <div>
         <h1>HeadCount</h1>
         <Input retrieveInput={this.retrieveInput.bind(this)}/>
-        <Card />
+        <CardGrid data={this.state.data}/>
       </div>
     )
   }
