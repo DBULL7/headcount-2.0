@@ -12,9 +12,15 @@ class Card extends Component {
     let years = Object.keys(this.props.data)
     let districtStats = Object.values(this.props.data)
     let cardInfo = years.map((year, index) => {
-      return (
-        <h5 className='district-data' key={index}>{year} : {districtStats[index]}</h5>
-      )
+      if (districtStats[index] > .5) {
+        return (
+          <h5 className='district-data' key={index}>{year} : <span className='above-average'>{districtStats[index]}</span></h5>
+        )
+      } else {
+        return (
+          <h5 className='district-data red' key={index}>{year} : <span className='below-average'>{districtStats[index]}</span></h5>
+        )
+      }
     })
     return cardInfo
     // console.log(Object.values(test))
