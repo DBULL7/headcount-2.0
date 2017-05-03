@@ -26,3 +26,11 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.above-average {
+  color: #18912B;
+}
+
+.below-average {
+  color: #e70000;
+}

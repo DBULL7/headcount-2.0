@@ -8,6 +8,7 @@ import kinderData from '../data/kindergartners_in_full_day_program.js'
 class App extends Component {
 
   constructor() {
+    // let data = new DistrictRepository(kinderData)
     super()
     this.state = {
       input: '',
@@ -22,7 +23,7 @@ class App extends Component {
   }
 
   retrieveInput(input) {
-    this.setState({input})
+    console.log(input)
   }
 
   render() {
