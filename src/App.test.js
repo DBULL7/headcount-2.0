@@ -1,8 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  // ReactDOM.render(<App />, div);
-});
+describe('App', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(<App />, div)
+  })
+
+  it('should have data', () => {
+    let app = new App
+    console.log(app.data)
+  })
+})
