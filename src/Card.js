@@ -9,14 +9,14 @@ class Card extends Component {
   }
 
   displayData() {
-    let test = Object.keys(this.props.data)
-    let test2 = Object.values(this.props.data)
-    let test3 = test.map((year, index) => {
+    let years = Object.keys(this.props.data)
+    let districtStats = Object.values(this.props.data)
+    let cardInfo = years.map((year, index) => {
       return (
-        <h5 className='district-data' key={index}>{year} : {test2[index]}</h5>
+        <h5 className='district-data' key={index}>{year} : {districtStats[index]}</h5>
       )
     })
-    return test3
+    return cardInfo
     // console.log(Object.values(test))
   }
 
