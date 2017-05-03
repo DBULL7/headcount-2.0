@@ -1,0 +1,28 @@
+#card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-info {
+  border: 1px solid black;
+  width: 15%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.district-name {
+  color: #FFE207;
+  background: #0E54B6;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.district-data {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

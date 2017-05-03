@@ -15,7 +15,7 @@ class Input extends Component {
 
   render() {
     return (
-      <div>
+      <div id='search-field'>
         <input value={this.state.value}
                onChange={(event) => {
                  this.props.retrieveInput(event.target.value);

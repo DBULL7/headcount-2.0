@@ -13,7 +13,7 @@ class Card extends Component {
     let test2 = Object.values(this.props.data)
     let test3 = test.map((year, index) => {
       return (
-        <h5 key={index}>{year} : {test2[index]}</h5>
+        <h5 className='district-data' key={index}>{year} : {test2[index]}</h5>
       )
     })
     return test3
@@ -22,8 +22,8 @@ class Card extends Component {
 
   render() {
     return (
-      <div className='card'>
-        {this.props.title}
+      <div className='card-info'>
+        <p className='district-name'>{this.props.title}</p>
         {this.displayData()}
       </div>
     )
