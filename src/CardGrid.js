@@ -3,12 +3,15 @@ import Card from './Card'
 
 
 const CardGrid = ({data}) => {
-  let test = Object.values(data)
-  let test2 = []
-  test.forEach(obj => {
+  let dataValues = Object.values(data)
+  let districtStats = []
+
+
+  dataValues.forEach(obj => {
     // console.log(obj.data)
-    test2.push(obj.data)
+    districtStats.push(obj.data)
   })
+
   return (
     <div id='card-container'>
       {
@@ -16,7 +19,7 @@ const CardGrid = ({data}) => {
           return <Card
                   className='district-cards'
                   title={district}
-                  data={test2[index]}
+                  data={districtStats[index]}
                   key={index}
                  />
         })
