@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Love+Ya+Like+A+Sister');
+
+
+#search-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+input {
+  font-family: 'Droid Sans', sans-serif;
+  width: 25%;
+  height: 30px;
+  border: 2px solid #0E54B6;
+}
+
+button {
+  font-family: 'Droid Sans', sans-serif;
+  width: 5%;
+  height: 36px;
+  border: none;
+  background: #18912B;
+
+}

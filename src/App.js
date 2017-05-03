@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+import './styles/App.css';
 import CardGrid from './CardGrid.js'
 import Input from './Input.js'
 import DistrictRepository from './helper.js'
 import kinderData from '../data/kindergartners_in_full_day_program.js'
 
-
-
 class App extends Component {
+
   constructor() {
     super()
     this.state = {
@@ -29,12 +28,19 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>HeadCount</h1>
+        <h1>
+          <img id='bookbag' src={require('./styles/images/backpack.png')} alt='bookbag logo'/>
+          HeadCount
+          <img id='bus' src={require('./styles/images/bus.png')} alt='schoolbus logo'/>
+        </h1>
         <Input retrieveInput={this.retrieveInput.bind(this)}/>
-        <CardGrid data={this.state.data}/>
+        <div>
+          <CardGrid data={this.state.data}/>
+        </div>
       </div>
     )
   }
+
 }
 
 export default App;

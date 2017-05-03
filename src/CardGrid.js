@@ -10,11 +10,11 @@ const CardGrid = ({data}) => {
     test2.push(obj.data)
   })
   return (
-    <div>
+    <div id='card-container'>
       {
         Object.keys(data).map((district, index) => {
-
           return <Card
+                  className='district-cards'
                   title={district}
                   data={test2[index]}
                   key={index}
