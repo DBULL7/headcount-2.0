@@ -5,9 +5,8 @@ import Input from './Input.js'
 import DistrictRepository from './helper.js'
 import kinderData from '../data/kindergartners_in_full_day_program.js'
 
-
-
 class App extends Component {
+
   constructor() {
     super()
     this.state = {
@@ -35,6 +34,7 @@ class App extends Component {
       </div>
     )
   }
+  
 }
 
 export default App;
