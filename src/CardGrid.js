@@ -3,6 +3,8 @@ import Card from './Card'
 
 
 const CardGrid = ({data, handleComparedCards}) => {
+  console.log('Data');
+  console.log(data);
   let dataValues = Object.values(data)
   let districtStats = []
 
@@ -10,7 +12,7 @@ const CardGrid = ({data, handleComparedCards}) => {
   dataValues.forEach(obj => {
     districtStats.push(obj.data)
   })
-
+  // console.log(districtStats)
   return (
     <div id='card-container'>
       {

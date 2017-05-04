@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/App.css';
 import CardGrid from './CardGrid.js'
 import Input from './Input.js'
+import CompareCardsGrid from './CompareCardsGrid'
 import DistrictRepository from './helper.js'
 import kinderData from '../data/kindergartners_in_full_day_program.js'
 
@@ -69,7 +70,11 @@ class App extends Component {
           HeadCount
           <img id='bus' src={require('./styles/images/bus.png')} alt='schoolbus logo'/>
         </h1>
+
         <Input findByName={this.findByName.bind(this)} findAllMatches={this.findAllMatches.bind(this)}/>
+        <div>
+          <CompareCardsGrid compareCards={this.state.compareDistricts}/>
+        </div>
         <div>
           <CardGrid handleComparedCards={this.handleComparedCards.bind(this)} data={this.state.data}/>
         </div>
