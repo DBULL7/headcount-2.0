@@ -4,9 +4,19 @@ class Card extends Component {
   constructor() {
     super()
     this.state = {
-      // id: Date.now()
+      clicked: false
     }
   }
+
+  handleClick() {
+    let change = !this.state.clicked
+    this.setState({clicked: change})
+    if (change) {
+      this.props.handleComparedCards(this.props.title)
+
+    }
+  }
+
 
   displayData() {
     let years = Object.keys(this.props.data)
@@ -28,7 +38,7 @@ class Card extends Component {
 
   render() {
     return (
-      <div className='card-info'>
+      <div className='card-info' onClick={() => this.handleClick()}>
         <p className='district-name'>{this.props.title}</p>
         {this.displayData()}
       </div>

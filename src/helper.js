@@ -34,7 +34,6 @@ export default class DistrictRepository {
    findAverage(district) {
      let findDistrict = this.findByName(district)
      let test = Object.keys(findDistrict.data)
-    //  console.log(Object.keys(findDistrict.data))
      let test2 = test.reduce((acc, year) => {
        return acc += findDistrict.data[year]
      }, 0)
@@ -46,7 +45,6 @@ export default class DistrictRepository {
    compareDistrictAverages(firstAvg, secondAvg) {
      let test = this.findAverage(firstAvg)
      let test2 = this.findAverage(secondAvg)
-     console.log(test2)
      let combinedAvg = (test / test2)
      return {[firstAvg.toUpperCase()]: test, [secondAvg.toUpperCase()]: test2, 'compared': Math.round(1000*combinedAvg)/1000}
    }

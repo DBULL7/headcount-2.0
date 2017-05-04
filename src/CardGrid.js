@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card'
 
 
-const CardGrid = ({data}) => {
+const CardGrid = ({data, handleComparedCards}) => {
   let dataValues = Object.values(data)
   let districtStats = []
 
@@ -19,6 +19,7 @@ const CardGrid = ({data}) => {
                   className='district-cards'
                   title={district}
                   data={districtStats[index]}
+                  handleComparedCards={handleComparedCards}
                   key={index}
                  />
         })
