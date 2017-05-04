@@ -8,7 +8,6 @@ const CardGrid = ({data}) => {
 
 
   dataValues.forEach(obj => {
-    // console.log(obj.data)
     districtStats.push(obj.data)
   })
 

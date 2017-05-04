@@ -43,8 +43,29 @@ class App extends Component {
   }
 
   findAllMatches(input) {
-    // let allMatches = new DistrictRepository(kinderData).findAllMatches(input)
-    // // console.log(allMatches)
+    let allMatches = new DistrictRepository(kinderData).findAllMatches(input)
+    // console.log(allMatches)
+    let test2 = {}
+    let test = allMatches.forEach(key => {
+      let test3 = new DistrictRepository(kinderData).findByName(key)
+      console.log(test3);
+      // console.log(key);
+      test2[key] = {'data': {}}
+      test2[key].data = test3.data
+    })
+
+
+    console.log(test2)
+    this.setState({data: test2})
+    // console.log(test2);
+
+    // console.log(this.state.data);
+
+    // let test4 = test.reduce((obj, next) => {
+    //
+    //   return obj
+    // }, {})
+
     // let bullshit = allMatches.map(key => {
     //   // console.log(key);
     //   // let test = this.findByName(key)
