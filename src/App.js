@@ -33,8 +33,16 @@ class App extends Component {
      let test2 = this.state.compareDistricts.shift()
      let test3 = this.state.compareDistricts.concat(searchedData)
      this.setState({compareDistricts: test3})
-    //  console.log(test2)
    }
+  }
+
+  compareDistrictAverages() {
+    if(this.state.compareDistricts.length === 2) {
+      let first = this.state.compareDistricts[0].location
+      let second = this.state.compareDistricts[1].location
+      let average = new DistrictRepository(kinderData).compareDistrictAverages(first, second)
+      console.log(average)
+    }
   }
 
 
@@ -66,6 +74,7 @@ class App extends Component {
   }
 
   render() {
+    {this.compareDistrictAverages()}
     return (
       <div>
         <h1>

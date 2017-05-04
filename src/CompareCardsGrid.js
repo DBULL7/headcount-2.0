@@ -1,5 +1,7 @@
 import React from 'react'
 import Card from './Card'
+import CompareCard from './CompareCard'
+
 
 
 const CompareCardsGrid = ({compareCards}) => {
@@ -19,6 +21,11 @@ const CompareCardsGrid = ({compareCards}) => {
   })
 
 
+// let renderCompareCard = () => {
+//   return(
+//     <CompareCard />
+//   )
+// }
 
   return (
     <div id='compare-card-container'>
@@ -32,6 +39,7 @@ const CompareCardsGrid = ({compareCards}) => {
                  />
         })
       }
+      {/* {this.renderCompareCard} */}
     </div>
   )
 }
