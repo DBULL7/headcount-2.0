@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       input: '',
       data: {},
-      compareDistricts: {}
+      compareDistricts: []
     }
   }
 
@@ -24,7 +24,11 @@ class App extends Component {
 
 
   handleComparedCards(cardTitle) {
-   console.log(cardTitle)
+   let searchedData = new DistrictRepository(kinderData).findByName(cardTitle)
+   if (this.state.compareDistricts.length < 2) {
+     let test = this.state.compareDistricts.concat(searchedData)
+     this.setState({compareDistricts: test})
+   }
   }
 
 
