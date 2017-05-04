@@ -20,11 +20,11 @@ export default class DistrictRepository {
   }
 
    findByName(searchedDistrict='') {
-     console.log(typeof searchedDistrict)
+    //  console.log(typeof searchedDistrict)
 
-     if(typeof searchedDistrict!='string') {
-       searchedDistrict = ''
-     }
+    //  if(typeof searchedDistrict!=='string') {
+    //    searchedDistrict = ''
+    //  }
      let district = searchedDistrict.toUpperCase()
      return this.data[district]
    }

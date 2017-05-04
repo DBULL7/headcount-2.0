@@ -33,7 +33,7 @@ class App extends Component {
      let test2 = this.state.compareDistricts.shift()
      let test3 = this.state.compareDistricts.concat(searchedData)
      this.setState({compareDistricts: test3})
-     console.log(test2)
+    //  console.log(test2)
    }
   }
 
