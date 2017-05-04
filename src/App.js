@@ -48,14 +48,14 @@ class App extends Component {
     let test2 = {}
     let test = allMatches.forEach(key => {
       let test3 = new DistrictRepository(kinderData).findByName(key)
-      console.log(test3);
+      // console.log(test3);
       // console.log(key);
       test2[key] = {'data': {}}
       test2[key].data = test3.data
     })
 
 
-    console.log(test2)
+    // console.log(test2)
     this.setState({data: test2})
     // console.log(test2);
 
