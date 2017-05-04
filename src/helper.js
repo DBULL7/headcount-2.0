@@ -20,7 +20,7 @@ export default class DistrictRepository {
   }
 
    findByName(searchedDistrict='') {
-     const district = searchedDistrict.toUpperCase()
+     let district = searchedDistrict.toUpperCase()
      return this.data[district]
    }
 

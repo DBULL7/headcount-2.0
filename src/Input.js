@@ -18,7 +18,8 @@ class Input extends Component {
       <div id='search-field'>
         <input value={this.state.value}
                onChange={(event) => {
-                 this.props.retrieveInput(event.target.value);
+                 this.props.findByName(event.target.value);
+                 this.props.findAllMatches(event.target.value);
                  this.localState(event.target.value)}}
                type='text'
                placeholder='Search By District'

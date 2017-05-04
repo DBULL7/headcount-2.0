@@ -19,11 +19,39 @@ class App extends Component {
   componentDidMount() {
     let data = new DistrictRepository(kinderData)
     // console.log(data.data)
+    // console.log('fired');
     this.setState({data: data.data})
   }
 
-  retrieveInput(input) {
-    console.log(input)
+  findByName(input) {
+    let searchedData = new DistrictRepository(kinderData).findByName(input)
+    // let allMatches = new DistrictRepository(kinderData).findAllMatches(input)
+    if (searchedData) {
+      // console.log(searchedData);
+      this.setState({data: {searchedData}})
+    // } else {
+    //   // console.log(allMatches)
+    //   let filtered
+    //   let test = allMatches.map(location => {
+    //     console.log(location)
+    //     return searchedData(location)
+    //   })
+      // console.log(test);
+      // this.setState({data: {test}})
+    }
+    // this.setState({data: searchedData.data})
+  }
+
+  findAllMatches(input) {
+    // let allMatches = new DistrictRepository(kinderData).findAllMatches(input)
+    // // console.log(allMatches)
+    // let bullshit = allMatches.map(key => {
+    //   // console.log(key);
+    //   // let test = this.findByName(key)
+    //   // return test
+    // })
+    // console.log(bullshit);
+    // this.setState({data: {bullshit}})
   }
 
   render() {
@@ -34,7 +62,7 @@ class App extends Component {
           HeadCount
           <img id='bus' src={require('./styles/images/bus.png')} alt='schoolbus logo'/>
         </h1>
-        <Input retrieveInput={this.retrieveInput.bind(this)}/>
+        <Input findByName={this.findByName.bind(this)} findAllMatches={this.findAllMatches.bind(this)}/>
         <div>
           <CardGrid data={this.state.data}/>
         </div>
