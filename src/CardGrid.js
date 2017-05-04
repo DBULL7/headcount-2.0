@@ -2,7 +2,9 @@ import React from 'react'
 import Card from './Card'
 
 
-const CardGrid = ({data}) => {
+const CardGrid = ({data, handleComparedCards}) => {
+  console.log('Data');
+  console.log(data);
   let dataValues = Object.values(data)
   let districtStats = []
 
@@ -10,7 +12,7 @@ const CardGrid = ({data}) => {
   dataValues.forEach(obj => {
     districtStats.push(obj.data)
   })
-
+  // console.log(districtStats)
   return (
     <div id='card-container'>
       {
@@ -19,6 +21,7 @@ const CardGrid = ({data}) => {
                   className='district-cards'
                   title={district}
                   data={districtStats[index]}
+                  handleComparedCards={handleComparedCards}
                   key={index}
                  />
         })
