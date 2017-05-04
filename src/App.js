@@ -28,6 +28,11 @@ class App extends Component {
    if (this.state.compareDistricts.length < 2) {
      let test = this.state.compareDistricts.concat(searchedData)
      this.setState({compareDistricts: test})
+   } else {
+     let test2 = this.state.compareDistricts.shift()
+     let test3 = this.state.compareDistricts.concat(searchedData)
+     this.setState({compareDistricts: test3})
+     console.log(test2)
    }
   }
 
