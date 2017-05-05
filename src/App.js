@@ -23,7 +23,9 @@ class App extends Component {
     this.setState({data: data.data})
   }
 
-
+  removeClickedCompareCard(card) {
+    console.log(card)
+  }
 
   handleComparedCards(cardTitle) {
    let searchedData = new DistrictRepository(kinderData).findByName(cardTitle)
@@ -85,7 +87,7 @@ class App extends Component {
 
         <Input findByName={this.findByName.bind(this)} findAllMatches={this.findAllMatches.bind(this)}/>
         <div>
-          <CompareCardsGrid average={this.compareDistrictAverages()} compareCards={this.state.compareDistricts}/>
+          <CompareCardsGrid handleComparedCards={this.handleComparedCards.bind(this)} average={this.compareDistrictAverages()} compareCards={this.state.compareDistricts}/>
         </div>
         <div>
           <CardGrid handleComparedCards={this.handleComparedCards.bind(this)} data={this.state.data}/>

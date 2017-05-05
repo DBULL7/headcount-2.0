@@ -4,7 +4,7 @@ import Card from './Card'
 
 
 
-const CompareCardsGrid = ({compareCards, average}) => {
+const CompareCardsGrid = ({compareCards, average, handleComparedCards}) => {
   console.log('average in compare card grid')
   console.log(average)
   let test = compareCards.reduce((acc, district) => {
@@ -38,13 +38,6 @@ let renderCompareCard = (average) => {
         {test[1]} : {test2[1]}
       </div>
     )
-    // Object.keys(average).map(key => {
-    // return (
-    //   <div>
-    //     hello there
-    //   </div>
-    //   )
-    // })
   }
 
 }
@@ -57,6 +50,7 @@ let renderCompareCard = (average) => {
                   className='district-cards'
                   title={district}
                   data={districtStats[index]}
+                  handleComparedCards={handleComparedCards}
                   key={index}
                  />
         })
