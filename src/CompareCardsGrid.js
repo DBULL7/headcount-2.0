@@ -27,7 +27,7 @@ let renderCompareCard = (average) => {
     let test = Object.keys(average)
     let test2 = Object.values(average)
     return (
-      <div id='compare-card'>
+      <div className='card-info' id='compare-card'>
         {test[0]} : {test2[0]}
         <br />
         {average.compared}

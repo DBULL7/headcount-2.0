@@ -29,7 +29,6 @@ class App extends Component {
     if (cardTitle == this.state.compareDistricts[0].location) {
       let test = this.state.compareDistricts.shift()
       let test2 = this.state.compareDistricts
-      console.log(test2);
       this.setState({compareDistricts: test2})
     } else {
       let test3 = this.state.compareDistricts.pop()
