@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
 class Card extends Component {
-  constructor() {
+  constructor({compareCardState}) {
     super()
     this.state = {
-      clicked: false
+      clicked: compareCardState || false
     }
   }
 
@@ -14,6 +14,8 @@ class Card extends Component {
     if (change) {
       this.props.handleComparedCards(this.props.title)
 
+    } else {
+      this.props.removeCard(this.props.title)
     }
   }
 

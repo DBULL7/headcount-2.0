@@ -23,7 +23,19 @@ class App extends Component {
     this.setState({data: data.data})
   }
 
-
+  removeCard(cardTitle) {
+    console.log(cardTitle)
+    console.log(this.state.compareDistricts)
+    if (cardTitle == this.state.compareDistricts[0].location) {
+      let test = this.state.compareDistricts.shift()
+      let test2 = this.state.compareDistricts
+      this.setState({compareDistricts: test2})
+    } else {
+      let test3 = this.state.compareDistricts.pop()
+      let test4 = this.state.compareDistricts
+      this.setState({compareDistricts: test4})
+    }
+  }
 
   handleComparedCards(cardTitle) {
    let searchedData = new DistrictRepository(kinderData).findByName(cardTitle)
@@ -61,9 +73,6 @@ class App extends Component {
     let test = allMatches.forEach(key => {
       let test3 = new DistrictRepository(kinderData).findByName(key)
 
-      // console.log(test3);
-      // console.log(key);
-
       test2[key] = {'data': {}}
       test2[key].data = test3.data
     })
@@ -85,7 +94,7 @@ class App extends Component {
 
         <Input findByName={this.findByName.bind(this)} findAllMatches={this.findAllMatches.bind(this)}/>
         <div>
-          <CompareCardsGrid average={this.compareDistrictAverages()} compareCards={this.state.compareDistricts}/>
+          <CompareCardsGrid removeCard={this.removeCard.bind(this)} handleComparedCards={this.handleComparedCards.bind(this)} average={this.compareDistrictAverages()} compareCards={this.state.compareDistricts}/>
         </div>
         <div>
           <CardGrid handleComparedCards={this.handleComparedCards.bind(this)} data={this.state.data}/>
