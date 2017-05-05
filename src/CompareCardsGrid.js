@@ -1,11 +1,12 @@
 import React from 'react'
 import Card from './Card'
-import CompareCard from './CompareCard'
+// import CompareCard from './CompareCard'
 
 
 
-const CompareCardsGrid = ({compareCards}) => {
-
+const CompareCardsGrid = ({compareCards, average}) => {
+  console.log('average in compare card grid')
+  console.log(average)
   let test = compareCards.reduce((acc, district) => {
     if(!acc[district]) {
       acc[district['location']] = {location: district.location, data: district.data}
@@ -21,11 +22,29 @@ const CompareCardsGrid = ({compareCards}) => {
   })
 
 
-// let renderCompareCard = () => {
-//   return(
-//     <CompareCard />
-//   )
-// }
+let renderCompareCard = (average) => {
+  console.log(average)
+
+  if(average) {
+    let test = Object.keys(average)
+    let test2 = Object.values(average)
+    console.log(test)
+    return (
+      <div>
+        {test[0]} : {test2[0]}
+        {test[0]} : {test2[0]}
+      </div>
+    )
+    // Object.keys(average).map(key => {
+    // return (
+    //   <div>
+    //     hello there
+    //   </div>
+    //   )
+    // })
+  }
+
+}
 
   return (
     <div id='compare-card-container'>
@@ -39,7 +58,7 @@ const CompareCardsGrid = ({compareCards}) => {
                  />
         })
       }
-      {/* {this.renderCompareCard} */}
+      {renderCompareCard(average)}
     </div>
   )
 }

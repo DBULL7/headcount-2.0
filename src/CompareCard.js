@@ -9,4 +9,4 @@ const CompareCard = () => {
 
 }
 
-export default CompareCard
+// export default CompareCard

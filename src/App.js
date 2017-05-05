@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       input: '',
       data: {},
-      compareDistricts: []
+      compareDistricts: [],
+      averageDistricts: {}
     }
   }
 
@@ -41,7 +42,7 @@ class App extends Component {
       let first = this.state.compareDistricts[0].location
       let second = this.state.compareDistricts[1].location
       let average = new DistrictRepository(kinderData).compareDistrictAverages(first, second)
-      console.log(average)
+      return average
     }
   }
 
@@ -74,7 +75,6 @@ class App extends Component {
   }
 
   render() {
-    {this.compareDistrictAverages()}
     return (
       <div>
         <h1>
@@ -85,7 +85,7 @@ class App extends Component {
 
         <Input findByName={this.findByName.bind(this)} findAllMatches={this.findAllMatches.bind(this)}/>
         <div>
-          <CompareCardsGrid compareCards={this.state.compareDistricts}/>
+          <CompareCardsGrid average={this.compareDistrictAverages()} compareCards={this.state.compareDistricts}/>
         </div>
         <div>
           <CardGrid handleComparedCards={this.handleComparedCards.bind(this)} data={this.state.data}/>
