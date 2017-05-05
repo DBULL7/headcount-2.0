@@ -3,8 +3,6 @@ import Card from './Card'
 
 
 const CardGrid = ({data, handleComparedCards}) => {
-  console.log('Data');
-  console.log(data);
   let dataValues = Object.values(data)
   let districtStats = []
 
