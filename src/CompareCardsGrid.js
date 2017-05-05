@@ -30,9 +30,12 @@ let renderCompareCard = (average) => {
     let test2 = Object.values(average)
     console.log(test)
     return (
-      <div>
+      <div id='compare-card'>
         {test[0]} : {test2[0]}
-        {test[0]} : {test2[0]}
+        <br />
+        {average.compared}
+        <br />
+        {test[1]} : {test2[1]}
       </div>
     )
     // Object.keys(average).map(key => {
