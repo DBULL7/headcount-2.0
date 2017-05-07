@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
 class Card extends Component {
-  constructor({compareCardState}) {
+  constructor() {
     super()
     this.state = {
-      clicked: compareCardState || false
+      clicked: false
     }
   }
 
