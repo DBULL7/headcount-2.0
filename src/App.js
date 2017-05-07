@@ -60,15 +60,14 @@ class App extends Component {
 
   findAllMatches(userSearchInput) {
     let allMatches = this.scrubbedData.findAllMatches(userSearchInput)
-    console.log(allMatches)
-    let test2 = {}
-    let test = allMatches.forEach(key => {
-      let test3 = this.scrubbedData.findByName(key)
+    let matchedData = {}
+    allMatches.forEach(location => {
+      let locationData = this.scrubbedData.findByName(location)
 
-      test2[key] = {'data': {}}
-      test2[key].data = test3.data
+      matchedData[location] = {'data': {}}
+      matchedData[location].data = locationData.data
     })
-    this.setState({data: test2})
+    this.setState({data: matchedData})
   }
 
   render() {

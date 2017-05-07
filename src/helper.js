@@ -27,7 +27,7 @@ export default class DistrictRepository {
    const locations = Object.keys(this.data)
 
    return searchInput ? locations.filter(location => location.includes(searchInput.toUpperCase()))
-                      : locations.map(location => this.data[location].location)                
+                      : locations.map(location => this.data[location].location)
   }
 
   findAverage(district) {
@@ -45,8 +45,8 @@ export default class DistrictRepository {
      let avg2 = this.findAverage(district2)
      let combinedAvg = (avg1 / avg2)
      return {
-       [district1]: avg1,
-       [district2]: avg2,
+       [district1.toUpperCase()]: avg1,
+       [district2.toUpperCase()]: avg2,
        'compared': Math.round(1000*combinedAvg)/1000
      }
    }
