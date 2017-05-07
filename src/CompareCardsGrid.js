@@ -12,16 +12,16 @@ const CompareCardsGrid = ({comparedDistricts, comparedAverage, handleComparedCar
 
   let renderCompareCard = (comparedAverage) => {
     if(comparedAverage) {
-    let districts = Object.keys(comparedAverage)
-    let averages = Object.values(comparedAverage)
-    return (
-      <div id='compare-card'>
-        <p>{districts[0]} : <span className='bold'>{averages[0]}</span></p>
-        <p className='bold'>{comparedAverage.compared}</p>
-        <p>{districts[1]} : <span className='bold'>{averages[1]}</span></p>
-      </div>
-    )
-  }
+      let districts = Object.keys(comparedAverage)
+      let averages = Object.values(comparedAverage)
+      return (
+        <div id='compare-card'>
+          <p>{districts[0]} : <span className='bold'>{averages[0]}</span></p>
+          <p className='bold'>{comparedAverage.compared}</p>
+          <p>{districts[1]} : <span className='bold'>{averages[1]}</span></p>
+        </div>
+      )
+    }
   }
 
   return (
@@ -32,11 +32,11 @@ const CompareCardsGrid = ({comparedDistricts, comparedAverage, handleComparedCar
                   className='district-cards'
                   title={district.location}
                   data={districtStats[index]}
-                  compareCardState={true}
+                  isClicked={true}
                   handleComparedCards={handleComparedCards}
-                  removeCard={removeCard}
+                  // removeCard={removeCard}
                   key={index}
-                  id={'compare' + index}/>
+                  id={district.location}/>
         })
       }
       {renderCompareCard(comparedAverage)}

@@ -5,8 +5,9 @@ import Input from './Input.js'
 import CompareCardsGrid from './CompareCardsGrid'
 import DistrictRepository from './helper.js'
 import kinderData from '../data/kindergartners_in_full_day_program.js'
+import PropTypes from 'prop-types';
 
-class App extends Component {
+export default class App extends Component {
 
   constructor() {
     super()
@@ -22,15 +23,15 @@ class App extends Component {
     this.setState({data: this.scrubbedData.data})
   }
 
-  removeCard(cardTitle) {
-    if (cardTitle === this.state.comparedDistricts[0].location) {
-      this.state.comparedDistricts.shift()
-      this.setState({comparedDistricts: this.state.comparedDistricts})
-    } else {
-      this.state.comparedDistricts.pop()
-      this.setState({comparedDistricts: this.state.comparedDistricts})
-    }
-  }
+  // removeCard(cardTitle) {
+  //   if (cardTitle === this.state.comparedDistricts[0].location) {
+  //     this.state.comparedDistricts.shift()
+  //     this.setState({comparedDistricts: this.state.comparedDistricts})
+  //   } else {
+  //     this.state.comparedDistricts.pop()
+  //     this.setState({comparedDistricts: this.state.comparedDistricts})
+  //   }
+  // }
 
   handleComparedCards(cardTitle) {
    let searchedData = this.scrubbedData.findByName(cardTitle)
@@ -84,14 +85,19 @@ class App extends Component {
         <CompareCardsGrid
           comparedDistricts={this.state.comparedDistricts}
           comparedAverage={this.compareAverages()}
-          handleComparedCards={this.handleComparedCards.bind(this)}
-          removeCard={this.removeCard.bind(this)} />
+          handleComparedCards={this.handleComparedCards.bind(this)}/>
+          {/* removeCard={this.removeCard.bind(this)} */}
         <CardGrid handleComparedCards={this.handleComparedCards.bind(this)}
-          data={this.state.data}/>
+          data={this.state.data}
+          comparedDistricts={this.state.comparedDistricts} />
       </section>
     )
   }
 
 }
 
-export default App;
+App.propTypes = {
+  data: PropTypes.object,
+  comparedDistricts: PropTypes.array,
+  compare: PropTypes.object
+}

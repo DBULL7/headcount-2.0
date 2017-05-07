@@ -1,22 +1,32 @@
 import React, { Component } from 'react'
 
 class Card extends Component {
-  constructor({compareCardState}) {
+  constructor({isClicked}) {
     super()
     this.state = {
-      clicked: compareCardState || false
+      clicked: isClicked || false
     }
   }
 
   handleClick() {
-    let change = !this.state.clicked
-    this.setState({clicked: change})
-    if (change) {
+    if(this.state.clicked === false) {
+      this.setState({clicked:  true})
       this.props.handleComparedCards(this.props.title)
-
-    } else {
-      this.props.removeCard(this.props.title)
     }
+
+    // console.log(this.props.comparedDistricts)
+    // this.props.comparedDistricts.forEach( district => {
+    //   console.log(district.location)
+    // })
+
+    // let change = !this.state.clicked
+    // this.setState({clicked: change})
+    // if (change) {
+    //   this.props.handleComparedCards(this.props.title)
+    //
+    // } else {
+    //   this.props.removeCard(this.props.title)
+    // }
   }
 
 
@@ -35,7 +45,6 @@ class Card extends Component {
       }
     })
     return cardInfo
-    // console.log(Object.values(test))
   }
 
   render() {
