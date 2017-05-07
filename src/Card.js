@@ -39,12 +39,22 @@ class Card extends Component {
   }
 
   render() {
-    return (
-      <div className='card-info' onClick={() => this.handleClick()}>
-        <p className='district-name'>{this.props.title}</p>
-        {this.displayData()}
-      </div>
-    )
+    if(this.state.clicked === true){
+      return (
+        <div className='card-info clicked' onClick={() => this.handleClick()}>
+          <p className='district-name'>{this.props.title}</p>
+          {this.displayData()}
+        </div>
+      )
+    } else {
+      return (
+        <div className='card-info unclicked' onClick={() => this.handleClick()}>
+          <p className='district-name'>{this.props.title}</p>
+          {this.displayData()}
+        </div>
+      )
+    }
+
   }
 }
 

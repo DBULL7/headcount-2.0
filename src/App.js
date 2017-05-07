@@ -47,8 +47,7 @@ class App extends Component {
     if(this.state.comparedDistricts.length === 2) {
       let first = this.state.comparedDistricts[0].location
       let second = this.state.comparedDistricts[1].location
-      let average = this.scrubbedData.compareDistrictAverages(first, second)
-      return average
+      return this.scrubbedData.compareDistrictAverages(first, second)
     }
   }
 
