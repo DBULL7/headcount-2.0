@@ -5,16 +5,16 @@ export default class DistrictRepository {
   }
 
   cleanData(data) {
-    return data.reduce((acc, dataPoint) => {
+    return data.reduce((scrubbedData, dataPoint) => {
         const district = dataPoint.Location.toUpperCase()
         const timeFrame = dataPoint.TimeFrame
         const data = Math.round(1000*dataPoint.Data)/1000 || 0
 
-        if (!acc[district]) {
-          acc[district] = {'location': district, 'data': {}}
+        if (!scrubbedData[district]) {
+          scrubbedData[district] = {'location': district, 'data': {}}
         }
-        acc[district].data[timeFrame] = data;
-        return acc
+        scrubbedData[district].data[timeFrame] = data;
+        return scrubbedData
       }, {})
   }
 
@@ -27,7 +27,7 @@ export default class DistrictRepository {
    const locations = Object.keys(this.data)
 
    return searchInput ? locations.filter(location => location.includes(searchInput.toUpperCase()))
-                      : locations.map(location => this.data[location])
+                      : locations.map(location => this.data[location].location)                
   }
 
   findAverage(district) {

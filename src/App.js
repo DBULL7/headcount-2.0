@@ -58,8 +58,9 @@ class App extends Component {
     }
   }
 
-  findAllMatches(input) {
-    let allMatches = this.scrubbedData.findAllMatches(input)
+  findAllMatches(userSearchInput) {
+    let allMatches = this.scrubbedData.findAllMatches(userSearchInput)
+    console.log(allMatches)
     let test2 = {}
     let test = allMatches.forEach(key => {
       let test3 = this.scrubbedData.findByName(key)
