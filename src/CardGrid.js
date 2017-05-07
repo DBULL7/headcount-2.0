@@ -68,7 +68,9 @@ const CardGrid = ({data, handleComparedCards, comparedDistricts}) => {
     if(comparedDistricts.length >= 1) {
       console.log('clicked cards present')
       return (
-        
+        <div>
+          clicked cards present
+        </div>
       )
     }
   }
