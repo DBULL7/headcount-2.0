@@ -4,20 +4,20 @@ import Card from './Card'
 
 
 
-const CompareCardsGrid = ({compareCards, comparedAverage, handleComparedCards, removeCard}) => {
-
-  let test = compareCards.reduce((acc, district) => {
-    if(!acc[district]) {
-      acc[district['location']] = {location: district.location, data: district.data}
+const CompareCardsGrid = ({comparedDistricts, comparedAverage, handleComparedCards, removeCard}) => {
+  console.log('comparedDistricts')
+  console.log(comparedDistricts)
+  let districtStats = []
+  
+  let comparison = comparedDistricts.reduce((comparisonObj, district) => {
+    if(!comparisonObj[district]) {
+      comparisonObj[district.location] = {location: district.location, data: district.data}
     }
-    return acc
+    return comparisonObj
   },{})
 
-  let dataValues = Object.values(test)
-  let districtStats = []
-
-  dataValues.forEach(obj => {
-    districtStats.push(obj.data)
+  comparedDistricts.forEach(dataPoint => {
+    districtStats.push(dataPoint.data)
   })
 
   let renderCompareCard = (comparedAverage) => {
@@ -39,11 +39,12 @@ const CompareCardsGrid = ({compareCards, comparedAverage, handleComparedCards, r
   return (
     <section id='compare-card-container'>
       {
-        Object.keys(test).map((district, index) => {
+        Object.keys(comparison).map((district, index) => {
           return <Card
                   className='district-cards'
                   title={district}
                   data={districtStats[index]}
+                  compareCardState={true}
                   handleComparedCards={handleComparedCards}
                   removeCard={removeCard}
                   key={index} />

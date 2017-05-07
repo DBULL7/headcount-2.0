@@ -83,7 +83,7 @@ class App extends Component {
           findByName={this.findByName.bind(this)}
           findAllMatches={this.findAllMatches.bind(this)}/>
         <CompareCardsGrid
-          compareCards={this.state.comparedDistricts}
+          comparedDistricts={this.state.comparedDistricts}
           comparedAverage={this.compareAverages()}
           handleComparedCards={this.handleComparedCards.bind(this)}
           removeCard={this.removeCard.bind(this)} />
