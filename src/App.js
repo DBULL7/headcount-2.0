@@ -20,6 +20,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    console.log('component did mount')
     this.setState({data: this.scrubbedData.data})
   }
 

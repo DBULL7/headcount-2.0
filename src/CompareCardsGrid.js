@@ -9,7 +9,7 @@ const CompareCardsGrid = ({comparedDistricts, comparedAverage, handleComparedCar
   comparedDistricts.forEach(dataPoint => {
     districtStats.push(dataPoint.data)
   })
-
+  console.log('i filred')
   let renderCompareCard = (comparedAverage) => {
     if(comparedAverage) {
       let districts = Object.keys(comparedAverage)

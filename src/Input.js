@@ -2,24 +2,13 @@ import React, { Component } from 'react'
 
 class Input extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      value: ''
-    }
-  }
-
-  localState(event) {
-    this.setState({value: event})
-  }
 
   render() {
     return (
       <section id='search-field'>
-        <input value={this.state.value}
-               onChange={(event) => {
+        <input onChange={(event) => {
                  this.props.findAllMatches(event.target.value)
-                 this.localState(event.target.value)}}
+                }}
                type='text'
                placeholder='Search By District' />
       </section>
