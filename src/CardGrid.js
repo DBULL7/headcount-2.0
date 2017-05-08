@@ -34,7 +34,7 @@ import Card from './Card'
 
 
 
-const CardGrid = ({data, handleComparedCards, comparedDistricts}) => {
+const CardGrid = ({data, handleComparedCards, comparedDistricts, removeCard}) => {
   let dataValues = Object.values(data)
   let districtStats = []
 
@@ -51,10 +51,11 @@ const CardGrid = ({data, handleComparedCards, comparedDistricts}) => {
         Object.keys(data).map((district, index) => {
           return (
               <Card
-                className='district-cards unclicked'
+                className='district-cards'
                 title={district}
                 data={districtStats[index]}
                 handleComparedCards={handleComparedCards}
+                removeCard={removeCard}
                 key={district}
                 isClicked={false}
                />
@@ -64,12 +65,10 @@ const CardGrid = ({data, handleComparedCards, comparedDistricts}) => {
     }
   }
 
-  let clickedCardsPresent = () => {
-    if(comparedDistricts.length >= 1) {
+  let oneCardClicked = () => {
+    if(comparedDistricts.length === 1) {
       return (
         Object.keys(data).map((district, index) => {
-          console.log(comparedDistricts[0].location)
-          console.log(data[district].location)
           if(data[district].location === comparedDistricts[0].location){
             return(
               <Card
@@ -77,6 +76,7 @@ const CardGrid = ({data, handleComparedCards, comparedDistricts}) => {
                 title={district}
                 data={districtStats[index]}
                 handleComparedCards={handleComparedCards}
+                removeCard={removeCard}
                 key={district}
                 isClicked={true}
               />
@@ -84,10 +84,11 @@ const CardGrid = ({data, handleComparedCards, comparedDistricts}) => {
           } else {
             return(
               <Card
-                className='district-cards clicked'
+                className='district-cards'
                 title={district}
                 data={districtStats[index]}
                 handleComparedCards={handleComparedCards}
+                removeCard={removeCard}
                 key={district}
                 isClicked={false}
               />
@@ -98,10 +99,44 @@ const CardGrid = ({data, handleComparedCards, comparedDistricts}) => {
     }
   }
 
+  let twoCardsClicked = () => {
+    if(comparedDistricts.length === 2) {
+      return(
+        Object.keys(data).map((district, index) => {
+          if(data[district].location === comparedDistricts[0].location || data[district].location === comparedDistricts[1].location){
+            return(
+              <Card
+                className='district-cards clicked'
+                title={district}
+                data={districtStats[index]}
+                handleComparedCards={handleComparedCards}
+                removeCard={removeCard}
+                key={district}
+                isClicked={true}
+              />
+            )
+          } else {
+            return(
+              <Card
+                className='district-cards'
+                title={district}
+                data={districtStats[index]}
+                handleComparedCards={handleComparedCards}
+                removeCard={removeCard}
+                key={district}
+                isClicked={false}
+              />
+            )
+          }
+        })
+      )
+    }
+  }
   return (
     <div id='card-container'>
       {noClickedCards()}
-      {clickedCardsPresent()}
+      {oneCardClicked()}
+      {twoCardsClicked()}
 
 
     </div>

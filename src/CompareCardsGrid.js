@@ -29,13 +29,13 @@ const CompareCardsGrid = ({comparedDistricts, comparedAverage, handleComparedCar
       {
         comparedDistricts.map((district, index) => {
           return <Card
-                  className='district-cards'
+                  className='district-cards clicked'
                   title={district.location}
                   data={districtStats[index]}
                   isClicked={true}
                   handleComparedCards={handleComparedCards}
-                  // removeCard={removeCard}
-                  key={index}
+                  removeCard={removeCard}
+                  key={district.location}
                   id={district.location}/>
         })
       }

@@ -23,15 +23,15 @@ export default class App extends Component {
     this.setState({data: this.scrubbedData.data})
   }
 
-  // removeCard(cardTitle) {
-  //   if (cardTitle === this.state.comparedDistricts[0].location) {
-  //     this.state.comparedDistricts.shift()
-  //     this.setState({comparedDistricts: this.state.comparedDistricts})
-  //   } else {
-  //     this.state.comparedDistricts.pop()
-  //     this.setState({comparedDistricts: this.state.comparedDistricts})
-  //   }
-  // }
+  removeCard(cardTitle) {
+    if (cardTitle === this.state.comparedDistricts[0].location) {
+      this.state.comparedDistricts.shift()
+      this.setState({comparedDistricts: this.state.comparedDistricts})
+    } else {
+      this.state.comparedDistricts.pop()
+      this.setState({comparedDistricts: this.state.comparedDistricts})
+    }
+  }
 
   handleComparedCards(cardTitle) {
    let searchedData = this.scrubbedData.findByName(cardTitle)
@@ -85,11 +85,12 @@ export default class App extends Component {
         <CompareCardsGrid
           comparedDistricts={this.state.comparedDistricts}
           comparedAverage={this.compareAverages()}
-          handleComparedCards={this.handleComparedCards.bind(this)}/>
-          {/* removeCard={this.removeCard.bind(this)} */}
+          handleComparedCards={this.handleComparedCards.bind(this)}
+          removeCard={this.removeCard.bind(this)} />
         <CardGrid handleComparedCards={this.handleComparedCards.bind(this)}
           data={this.state.data}
-          comparedDistricts={this.state.comparedDistricts} />
+          comparedDistricts={this.state.comparedDistricts}
+          removeCard={this.removeCard.bind(this)}/>
       </section>
     )
   }

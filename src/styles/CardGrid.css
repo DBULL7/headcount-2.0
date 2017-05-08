@@ -16,6 +16,11 @@
   background: #DFE1EA;
 }
 
+.unclicked {
+  border: solid 1px black;
+  /*background: #DFE1EA;*/
+}
+
 .district-name {
   color: #FFE207;
   background: #0E54B6;

@@ -12,7 +12,11 @@ class Card extends Component {
     if(this.state.clicked === false) {
       this.setState({clicked:  true})
       this.props.handleComparedCards(this.props.title)
+    } else {
+      this.setState({clicked: false})
+      this.props.removeCard(this.props.title)
     }
+
 
     // console.log(this.props.comparedDistricts)
     // this.props.comparedDistricts.forEach( district => {
@@ -57,7 +61,7 @@ class Card extends Component {
       )
     } else {
       return (
-        <div className='card-info unclicked' onClick={() => this.handleClick()}>
+        <div className='card-info' onClick={() => this.handleClick()}>
           <p className='district-name'>{this.props.title}</p>
           {this.displayData()}
         </div>
