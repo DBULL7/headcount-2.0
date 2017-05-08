@@ -16,21 +16,6 @@ class Card extends Component {
       this.setState({clicked: false})
       this.props.removeCard(this.props.title)
     }
-
-
-    // console.log(this.props.comparedDistricts)
-    // this.props.comparedDistricts.forEach( district => {
-    //   console.log(district.location)
-    // })
-
-    // let change = !this.state.clicked
-    // this.setState({clicked: change})
-    // if (change) {
-    //   this.props.handleComparedCards(this.props.title)
-    //
-    // } else {
-    //   this.props.removeCard(this.props.title)
-    // }
   }
 
 

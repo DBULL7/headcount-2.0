@@ -37,7 +37,6 @@ import Card from './Card'
 const CardGrid = ({data, handleComparedCards, comparedDistricts, removeCard}) => {
   let dataValues = Object.values(data)
   let districtStats = []
-
   dataValues.forEach(obj => {
     districtStats.push(obj.data)
   })
@@ -46,7 +45,7 @@ const CardGrid = ({data, handleComparedCards, comparedDistricts, removeCard}) =>
 
 
   let noClickedCards = () => {
-    if(comparedDistricts.length===0) {
+    if(comparedDistricts.length === 0) {
       return (
         Object.keys(data).map((district, index) => {
           return (

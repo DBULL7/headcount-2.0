@@ -13,16 +13,12 @@ export default class App extends Component {
     super()
     this.scrubbedData = new DistrictRepository(kinderData)
     this.state = {
-      data: {},
+      data: this.scrubbedData.data,
       comparedDistricts: [],
       averageDistricts: {}
     }
   }
 
-  componentDidMount() {
-    console.log('component did mount')
-    this.setState({data: this.scrubbedData.data})
-  }
 
   removeCard(cardTitle) {
     if (cardTitle === this.state.comparedDistricts[0].location) {
@@ -66,7 +62,7 @@ export default class App extends Component {
     allMatches.forEach(location => {
       let locationData = this.scrubbedData.findByName(location)
 
-      matchedData[location] = {'data': {}}
+      matchedData[location] = {'location': location, 'data': {}}
       matchedData[location].data = locationData.data
     })
     this.setState({data: matchedData})
