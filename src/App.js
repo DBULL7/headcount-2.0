@@ -99,7 +99,7 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-  data: PropTypes.object,
   comparedDistricts: PropTypes.array,
-  compare: PropTypes.object
+  comparedAverage: PropTypes.object,
+  data: PropTypes.object,
 }

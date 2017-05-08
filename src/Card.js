@@ -52,7 +52,7 @@ class Card extends Component {
   }
 
   render() {
-    if(this.state.clicked === true){
+    if(this.props.isClicked === true){
       return (
         <div className='card-info clicked' onClick={() => this.handleClick()}>
           <p className='district-name'>{this.props.title}</p>
