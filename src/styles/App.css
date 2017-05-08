@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Love+Ya+Like+A+Sister');
 @import 'input.css';
 @import 'CardGrid.css';
-@import 'card.css'
+@import 'card.css';
+@import 'compareCardGrid.css';
 
 body {
   font-family: 'Droid Sans', sans-serif;

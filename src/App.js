@@ -5,104 +5,97 @@ import Input from './Input.js'
 import CompareCardsGrid from './CompareCardsGrid'
 import DistrictRepository from './helper.js'
 import kinderData from '../data/kindergartners_in_full_day_program.js'
+import PropTypes from 'prop-types';
 
-class App extends Component {
+export default class App extends Component {
 
   constructor() {
     super()
+    this.scrubbedData = new DistrictRepository(kinderData)
     this.state = {
-      input: '',
-      data: {},
-      compareDistricts: [],
+      data: this.scrubbedData.data,
+      comparedDistricts: [],
       averageDistricts: {}
     }
   }
 
-  componentDidMount() {
-    let data = new DistrictRepository(kinderData)
-    this.setState({data: data.data})
-  }
 
   removeCard(cardTitle) {
-    console.log(cardTitle)
-    console.log(this.state.compareDistricts)
-    if (cardTitle == this.state.compareDistricts[0].location) {
-      let test = this.state.compareDistricts.shift()
-      let test2 = this.state.compareDistricts
-      this.setState({compareDistricts: test2})
+    if (cardTitle === this.state.comparedDistricts[0].location) {
+      this.state.comparedDistricts.shift()
+      this.setState({comparedDistricts: this.state.comparedDistricts})
     } else {
-      let test3 = this.state.compareDistricts.pop()
-      let test4 = this.state.compareDistricts
-      this.setState({compareDistricts: test4})
+      this.state.comparedDistricts.pop()
+      this.setState({comparedDistricts: this.state.comparedDistricts})
     }
   }
 
   handleComparedCards(cardTitle) {
-   let searchedData = new DistrictRepository(kinderData).findByName(cardTitle)
-   if (this.state.compareDistricts.length < 2) {
-     let test = this.state.compareDistricts.concat(searchedData)
-     this.setState({compareDistricts: test})
+   let searchedData = this.scrubbedData.findByName(cardTitle)
+
+   if (this.state.comparedDistricts.length < 2) {
+     this.setState({comparedDistricts: this.state.comparedDistricts.concat(searchedData)})
    } else {
-     let test2 = this.state.compareDistricts.shift()
-     let test3 = this.state.compareDistricts.concat(searchedData)
-     this.setState({compareDistricts: test3})
+     this.state.comparedDistricts.shift()
+     this.setState({comparedDistricts: this.state.comparedDistricts.concat(searchedData)})
    }
   }
 
-  compareDistrictAverages() {
-    if(this.state.compareDistricts.length === 2) {
-      let first = this.state.compareDistricts[0].location
-      let second = this.state.compareDistricts[1].location
-      let average = new DistrictRepository(kinderData).compareDistrictAverages(first, second)
-      return average
+  compareAverages() {
+    if(this.state.comparedDistricts.length === 2) {
+      let first = this.state.comparedDistricts[0].location
+      let second = this.state.comparedDistricts[1].location
+      return this.scrubbedData.compareDistrictAverages(first, second)
     }
   }
 
-
-
   findByName(input) {
-    let searchedData = new DistrictRepository(kinderData).findByName(input)
+    let searchedData = this.scrubbedData.findByName(input)
     if (searchedData) {
       this.setState({data: {searchedData}})
     }
   }
 
-  findAllMatches(input) {
-    let allMatches = new DistrictRepository(kinderData).findAllMatches(input)
-    let test2 = {}
-    let test = allMatches.forEach(key => {
-      let test3 = new DistrictRepository(kinderData).findByName(key)
+  findAllMatches(userSearchInput) {
+    let allMatches = this.scrubbedData.findAllMatches(userSearchInput)
+    let matchedData = {}
+    allMatches.forEach(location => {
+      let locationData = this.scrubbedData.findByName(location)
 
-      test2[key] = {'data': {}}
-      test2[key].data = test3.data
+      matchedData[location] = {'location': location, 'data': {}}
+      matchedData[location].data = locationData.data
     })
-
-
-    // console.log(test2)
-    this.setState({data: test2})
-
+    this.setState({data: matchedData})
   }
 
   render() {
     return (
-      <div>
+      <section id='app-wrapper'>
         <h1>
           <img id='bookbag' src={require('./styles/images/backpack.png')} alt='bookbag logo'/>
           HeadCount
           <img id='bus' src={require('./styles/images/bus.png')} alt='schoolbus logo'/>
         </h1>
-
-        <Input findByName={this.findByName.bind(this)} findAllMatches={this.findAllMatches.bind(this)}/>
-        <div>
-          <CompareCardsGrid removeCard={this.removeCard.bind(this)} handleComparedCards={this.handleComparedCards.bind(this)} average={this.compareDistrictAverages()} compareCards={this.state.compareDistricts}/>
-        </div>
-        <div>
-          <CardGrid handleComparedCards={this.handleComparedCards.bind(this)} data={this.state.data}/>
-        </div>
-      </div>
+        <Input
+          findByName={this.findByName.bind(this)}
+          findAllMatches={this.findAllMatches.bind(this)}/>
+        <CompareCardsGrid
+          comparedDistricts={this.state.comparedDistricts}
+          comparedAverage={this.compareAverages()}
+          handleComparedCards={this.handleComparedCards.bind(this)}
+          removeCard={this.removeCard.bind(this)} />
+        <CardGrid handleComparedCards={this.handleComparedCards.bind(this)}
+          data={this.state.data}
+          comparedDistricts={this.state.comparedDistricts}
+          removeCard={this.removeCard.bind(this)}/>
+      </section>
     )
   }
 
 }
 
-export default App;
+App.propTypes = {
+  comparedDistricts: PropTypes.array,
+  comparedAverage: PropTypes.object,
+  data: PropTypes.object,
+}

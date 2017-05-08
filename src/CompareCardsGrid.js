@@ -1,61 +1,45 @@
 import React from 'react'
 import Card from './Card'
-// import CompareCard from './CompareCard'
 
 
 
-const CompareCardsGrid = ({compareCards, average, handleComparedCards, removeCard}) => {
-  let compareCardState = true
-  let test = compareCards.reduce((acc, district) => {
-    if(!acc[district]) {
-      acc[district['location']] = {location: district.location, data: district.data}
-    }
-    return acc
-  },{})
 
-  let dataValues = Object.values(test)
+const CompareCardsGrid = ({comparedDistricts, comparedAverage, handleComparedCards, removeCard}) => {
   let districtStats = []
-
-  dataValues.forEach(obj => {
-    districtStats.push(obj.data)
+  comparedDistricts.forEach(dataPoint => {
+    districtStats.push(dataPoint.data)
   })
-
-
-let renderCompareCard = (average) => {
-
-  if(average) {
-    let test = Object.keys(average)
-    let test2 = Object.values(average)
-    return (
-      <div className='card-info' id='compare-card'>
-        {test[0]} : {test2[0]}
-        <br />
-        {average.compared}
-        <br />
-        {test[1]} : {test2[1]}
-      </div>
-    )
+  let renderCompareCard = (comparedAverage) => {
+    if(comparedAverage) {
+      let districts = Object.keys(comparedAverage)
+      let averages = Object.values(comparedAverage)
+      return (
+        <div id='compare-card'>
+          <p>{districts[0]} : <span className='bold'>{averages[0]}</span></p>
+          <p className='bold'>{comparedAverage.compared}</p>
+          <p>{districts[1]} : <span className='bold'>{averages[1]}</span></p>
+        </div>
+      )
+    }
   }
 
-}
-
   return (
-    <div id='compare-card-container'>
+    <section id='compare-card-container'>
       {
-        Object.keys(test).map((district, index) => {
+        comparedDistricts.map((district, index) => {
           return <Card
-                  className='district-cards'
-                  title={district}
-                  compareCardState={compareCardState}
+                  className='district-cards clicked'
+                  title={district.location}
                   data={districtStats[index]}
+                  isClicked={true}
                   handleComparedCards={handleComparedCards}
                   removeCard={removeCard}
-                  key={index}
-                 />
+                  key={district.location}
+                  id={district.location}/>
         })
       }
-      {renderCompareCard(average)}
-    </div>
+      {renderCompareCard(comparedAverage)}
+    </section>
   )
 }
 

@@ -1,0 +1,31 @@
+#compare-card-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+#compare{
+  order: 1;
+  background: magenta;
+}
+
+#compare-card {
+  position: absolute;
+  order: 2;
+  border: solid 2px #0E54B6;
+  /*margin-bottom: 2%;*/
+  height: 265px;
+  width: 15%;
+  text-align: center;
+  /*padding-top: 7%;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#compare1 {
+  order: 3;
+}

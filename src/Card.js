@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 
 class Card extends Component {
-  constructor({compareCardState}) {
+  constructor({isClicked}) {
     super()
     this.state = {
-      clicked: compareCardState || false
+      clicked: isClicked || false
     }
   }
 
   handleClick() {
-    let change = !this.state.clicked
-    this.setState({clicked: change})
-    if (change) {
+    if(this.state.clicked === false) {
+      this.setState({clicked:  true})
       this.props.handleComparedCards(this.props.title)
-
     } else {
+      this.setState({clicked: false})
       this.props.removeCard(this.props.title)
     }
   }
@@ -35,16 +34,25 @@ class Card extends Component {
       }
     })
     return cardInfo
-    // console.log(Object.values(test))
   }
 
   render() {
-    return (
-      <div className='card-info' onClick={() => this.handleClick()}>
-        <p className='district-name'>{this.props.title}</p>
-        {this.displayData()}
-      </div>
-    )
+    if(this.props.isClicked === true){
+      return (
+        <div className='card-info clicked' onClick={() => this.handleClick()}>
+          <p className='district-name'>{this.props.title}</p>
+          {this.displayData()}
+        </div>
+      )
+    } else {
+      return (
+        <div className='card-info' onClick={() => this.handleClick()}>
+          <p className='district-name'>{this.props.title}</p>
+          {this.displayData()}
+        </div>
+      )
+    }
+
   }
 }
 
