@@ -8,7 +8,7 @@ class Input extends Component {
       <section id='search-field'>
         <input onChange={(event) => {
                  this.props.findAllMatches(event.target.value)
-                }}
+               }}
                type='text'
                placeholder='Search By District' />
       </section>
